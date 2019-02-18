@@ -1,14 +1,20 @@
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
+import pandas as pd
 import os
-
+import re
+filextends = ('.jpg','.jpeg','.exif','.gif','.bmp','.png','.bpg',
+	'.tif')
 def load_pics(directory : 'images directory') -> "a loaded pic list":
 	im = []
 	for root,dirnames,filenames in os.walk(directory):
-		for filename in filenames:
-			filepath = os.path.join(root, filename)
-			im.append(Image.open(filepath))
+		if root == directory:
+			for filename in filenames:
+				if filename.lower().endswith(filextends):
+					#re.search(r'\.jpg',filename)
+					filepath = os.path.join(root, filename)
+					im.append(Image.open(filepath))
 	return im
 
 def preprocess(data : 'loaded pic list (from load_pics())',
@@ -47,12 +53,20 @@ def preprocess(data : 'loaded pic list (from load_pics())',
 		output_format = kwargs['output_format']
 	except:
 		output_format = None
+	try:
+		int_process_RGB = kwargs['int_process_RGB']
+	except:
+		int_process_RGB = False
 	for i in data:
 		if not(resize is None):
 			i = i.resize(resize)
 		if not(color_mode is None):
 			i = i.convert(mode=color_mode)
 		i = np.array(i)
+		if int_process_RGB:
+			a, b, c = i[:,:,0], i[:,:,1], i[:,:,2]
+			#R*256^2+G*256+B
+			i = a*65536 + b*256 + c
 		if not(output_format is None):
 			if output_format == '2d':
 				i = i.reshape((i.size))
@@ -63,10 +77,12 @@ def preprocess(data : 'loaded pic list (from load_pics())',
 
 if __name__ == '__main__':
 	# example
-	im = load_pics('./TestResource')
-	da = preprocess(im,resize=(128,128),color_mode='RGB',output_format='2d')
-	# output_format='2d' ,color_mode='RGB'
+	im = load_pics('./sample_images')
+	#da = preprocess(im,resize=(128,128),color_mode='RGB',output_format='2d')
+	da = preprocess(im,resize=(64,64),color_mode='RGB',output_format='2d',int_process_RGB=True)
+	pd.DataFrame(da).to_csv('sample_images.csv',index=False,header=False)
 	print(da)
+	print(da.shape)
 
 
 
