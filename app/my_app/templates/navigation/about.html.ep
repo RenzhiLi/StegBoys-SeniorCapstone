@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Benjamin Dreher">
+    <!--CSS Bootstrap CDN Link-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/site.css"/>
+    <link rel="stylesheet" type="text/css" href="css/home.css"/>
+    <link rel="stylesheet" type="text/css" href="css/about.css"/>
+    <link rel="stylesheet" type="text/css" href="css/contact.css"/>
+    <!--StegBoys Webpage Title-->
+    <title>StegBoys Steganography Detector</title>
+  </head>
+  <body class="bg-light text-dark">
+    <div class="container-fluid">
+      <div class ="row">
+        <div class="col-sm-12">
+          <img src="images/logo.png" alt="StegBoys" class="img-fluid logo">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <nav class="navbar navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_content" aria-controls="nav_content" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="images/menu.png" alt="Menu" class="img-fluid menu">
+        </button>
+        <div class="collapse navbar-collapse" id="nav_content">
+          <p class="navspec navbar-brand mt-sm-3" href="#">StegBoys</p>
+          <ul class="nav navbar-justified">
+              <li class="nav-item">
+                <a href="/home" target="_self" class="nav-link text-dark nav_links">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="/about" target="_self" class="nav-link text-dark nav_links">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="/contact" target="self" class="nav-link text-dark nav_links">Contact</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+    </div>
+    <div class="container-fluid">
+      <div class ="row">
+        <div class="col-sm-12 text-center" style="border-style: solid; border-width: 2px 2px 2px 2px; border-color:hsla(220, 21%, 29%, 0.5); height: 73vh;">
+          <h1 class="mt-sm-3 about_heading">About Us</h1>
+          <div class="about_body">
+            <p>StegBoys first formed in CSI4999 Senior Project class at Oakland University in January 2019. We have dedicated this project
+            to understanding the art of steganography and developing a unique solution that detects whether a hidden message is present in an image.</p>
+            <p>Using machine learning with classification algorithms such as SVM, we have developed an easy-to-use interface that permits anyone to make use of
+            steganography detection; this gives great utility to numerous users. In addition, we have provided adaptability for existing applications which content providers and government officials may use
+            for their respective applications.</p>
+            <p>Overall, there is great value placed on this application due to its ability to detect whether an image may be hiding a secret message, and there exists the possibility that in <thead>
+            the future one may be able to detect more sinister hidden data in an image such as malicious code.</p>
+          </div>
+        </div>
+      </div>
+      <div class ="row bg-dark text-light footer">
+        <div class="col-sm-12">
+            <hr class="copyright_break">
+            <div class="footer_box">
+            <p class="pt-sm-2 copyright">&copy; 2018 StegBoys Inc.</p>
+              <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a href="/home" target="_self" class="nav-link footer_links">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/about" target="_self" class="nav-link footer_links">About</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/contact" target="self" class="nav-link footer_links">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://icons8.com/" target="_blank" class="nav-link footer_links">Icons</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/RenzhiLi/StegBoys-SeniorCapstone" target="_blank" class="nav-link footer_links">GitHub</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--JavaScript for Bootstrap Components-->
+    <!--JS Frameworks must be loaded in the following order: jQuery, Popper.js, Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
