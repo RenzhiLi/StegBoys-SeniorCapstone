@@ -89,6 +89,7 @@ if __name__ == '__main__':
 	print(da)
 	print(da.shape)
 	'''
+	# command line args: imput dir, output csv file name, resize shape
 	im = load_pics(sys.argv[1])
 	data = preprocess(im,resize=eval(sys.argv[3]),color_mode='RGB',output_format='2d',int_process_RGB=True)
 	pd.DataFrame(data).to_csv(sys.argv[2],index=False,header=False)
