@@ -7,7 +7,7 @@ import sys
 filextends = ('.jpg','.jpeg','.exif','.gif','.bmp','.png','.bpg',
 	'.tif')
 def load_pics(directory : 'images directory') -> "a loaded pic list":
-	im = []
+	im , file_paths = [], []
 	if os.path.isdir(directory):
 		for root,dirnames,filenames in os.walk(directory):
 			if root == directory:
@@ -15,10 +15,11 @@ def load_pics(directory : 'images directory') -> "a loaded pic list":
 					if filename.lower().endswith(filextends):
 						#re.search(r'\.jpg',filename)
 						filepath = os.path.join(root, filename)
+						file_paths.append(filepath)
 						im.append(Image.open(filepath))
 	elif os.path.isfile(directory):
 		im.append(Image.open(directory))
-	return im
+	return im, file_paths
 
 def preprocess(data : 'loaded pic list (from load_pics())',
 				**kwargs : 'resize:tuple;color_mode:str;output_format:str'
@@ -78,21 +79,28 @@ def preprocess(data : 'loaded pic list (from load_pics())',
 		output = np.array(output)
 	return output
 
-if __name__ == '__main__':
-	
-	'''
+def exe_cmdline():
+	# command line args: imput dir, output csv file name, resize shape
+	im , file_path = load_pics(sys.argv[1])
+	data = preprocess(im,resize=eval(sys.argv[3]),color_mode='RGB',output_format='2d',int_process_RGB=True)
+	data = np.concatenate((np.array(file_path).reshape(-1,1),data),axis=1)
+	pd.DataFrame(data).to_csv(sys.argv[2],index=False,header=False)
+
+def main():
 	# example
 	# da = preprocess(im,resize=(128,128),color_mode='RGB',output_format='2d')
-	im = load_pics('./sample_images')
-	da = preprocess(im,resize=(64,64),color_mode='RGB',output_format='2d',int_process_RGB=True)
-	pd.DataFrame(da).to_csv('sample_images.csv',index=False,header=False)
-	print(da)
-	print(da.shape)
-	'''
-	# command line args: imput dir, output csv file name, resize shape
-	im = load_pics(sys.argv[1])
-	data = preprocess(im,resize=eval(sys.argv[3]),color_mode='RGB',output_format='2d',int_process_RGB=True)
-	pd.DataFrame(data).to_csv(sys.argv[2],index=False,header=False)
+	im , file_path = load_pics('./sample_images')
+	data = preprocess(im,resize=(64,64),color_mode='RGB',output_format='2d',int_process_RGB=True)
+	data = np.concatenate((np.array(file_path).reshape(-1,1),data),axis=1)
+	pd.DataFrame(data).to_csv('sample_images.csv',index=False,header=False)
+	print(data)
+	print(data.shape)
+
+if __name__ == '__main__':
+	exe_cmdline()
+
+
+
 
 
 
