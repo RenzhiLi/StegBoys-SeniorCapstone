@@ -96,13 +96,34 @@ def main():
 	print(data)
 	print(data.shape)
 
+def built_training_set(directory,targetfile,resize,tag):
+	im , file_paths, count = [], [], 0
+	for root,dirnames,filenames in os.walk(directory):
+		if root == directory:
+			for filename in filenames:
+				if filename.lower().endswith(filextends):
+					filepath = os.path.join(root, filename)
+					file_paths.append(filepath)
+					im.append(Image.open(filepath))
+					if count > 100:
+						data = preprocess(im,resize=resize,color_mode='RGB',output_format='2d',int_process_RGB=True)
+						data = np.concatenate((np.array(file_paths).reshape(-1,1),data),axis=1)
+						im , file_paths, count = [], [], 0
+						if tag == 0:
+							data = np.concatenate((data,np.zeros(data.shape[0]).reshape(-1,1)),axis=1)
+						elif tag == 1:
+							data = np.concatenate((data,np.ones(data.shape[0]).reshape(-1,1)),axis=1)
+						pd.DataFrame(data).to_csv(targetfile,index=False,header=False,mode='a')
+					count=count+1
+	if count != 0:
+		data = preprocess(im,resize=resize,color_mode='RGB',output_format='2d',int_process_RGB=True)
+		data = np.concatenate((np.array(file_paths).reshape(-1,1),data),axis=1)
+		if tag == 0:
+			data = np.concatenate((data,np.zeros(data.shape[0]).reshape(-1,1)),axis=1)
+		elif tag == 1:
+			data = np.concatenate((data,np.ones(data.shape[0]).reshape(-1,1)),axis=1)
+		pd.DataFrame(data).to_csv(targetfile,index=False,header=False,mode='a')
+	return data
+
 if __name__ == '__main__':
 	exe_cmdline()
-
-
-
-
-
-
-
-
