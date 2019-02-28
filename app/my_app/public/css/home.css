@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/*Images*/
+.book {
+  margin: 5%;
+  height: 80%;
+  width: 80%;
+  max-width: 500px;
+  max-height: 500px;
+  display: block;
+}
+
+.top-secret {
+  margin: 5%;
+  height: 80%;
+  width: 80%;
+  max-width: 500px;
+  max-height: 500px;
+  display: block;
+}
