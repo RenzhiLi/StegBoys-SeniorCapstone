@@ -12,6 +12,7 @@ sub startup {
   $self->secrets($config->{secrets});
   $self->helper(uploads => sub {return $config->{uploads_loc}});
   $self->helper(scripts => sub {return $config->{scripts_loc}});
+  $self->helper(csv => sub {return $config->{csv_loc}});
 
   # Router
   my $r = $self->routes;
