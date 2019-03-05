@@ -43,9 +43,12 @@ sub upload_image {
 
 	$zip->writeToFileNamed($output_zip);
 
+	$self->stash(id => $rand_name, results => '90%');
+	$self->render('home');
+
 	# returning results
-	$self->res->headers->content_type('application/zip');
-	$self->reply->asset(Mojo::Asset::File->new(path => $output_zip));
+	#$self->res->headers->content_type('application/zip');
+	#$self->reply->asset(Mojo::Asset::File->new(path => $output_zip));
 }
 
 sub upload_images {
@@ -95,6 +98,19 @@ sub upload_images {
 
 	$zip->writeToFileNamed($output_zip);
 
+	$self->stash(id => $rand_name, results => '90%');
+	$self->render('home');
+
+	# returning results
+	#$self->res->headers->content_type('application/zip');
+	#$self->reply->asset(Mojo::Asset::File->new(path => $output_zip));
+}
+
+sub download {
+	my $self = shift;
+	my $directory = $self->uploads.$self->param('id')."/";
+	my $output_zip = $directory."clean.zip";
+	
 	# returning results
 	$self->res->headers->content_type('application/zip');
 	$self->reply->asset(Mojo::Asset::File->new(path => $output_zip));

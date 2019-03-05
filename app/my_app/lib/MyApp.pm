@@ -24,6 +24,7 @@ sub startup {
   $r->get('/contact')->to('navigation#contact');
   $r->post('/upload_image')->to('process#upload_image');
   $r->post('/upload_images')->to('process#upload_images');
+  $r->get('/download/*id')->to('process#download');
 }
 
 1;
