@@ -48,10 +48,11 @@
         <div class="col-sm-6" style="border-style: solid; border-width: 2px 0px 2px 2px; border-color:hsla(220, 21%, 29%, 0.5);">
           <form action="/upload_image" enctype="multipart/form-data" method="post">
             <div class="form-group">
-              <label for="file_upload">Upload Image (.png only)</label>
+              <label for="file_upload">Upload Image</label>
               <input type="file" class="form-control" name="the_image" id="file_upload" accept="image/*">
-              <input type="submit" class="form-control">
             </div>
+			  <button type="submit" class="btn btn-success btn-sm btn-block sub_down_buttons">Submit</button>
+			  <button type="submit" class="btn btn-secondary btn-sm btn-block sub_down_buttons">Download</button>
           </form>
         </div>
       </div>
@@ -59,10 +60,11 @@
         <div class="col-sm-6" style="border-style: solid; border-width: 0px 2px 0px 0px; border-color:hsla(220, 21%, 29%, 0.5);">
           <form action="/upload_images" enctype="multipart/form-data" method="post">
             <div class="form-group">
-              <label for="batch_files_upload">Batch Image Upload (.png only)</label>
+              <label for="batch_files_upload">Batch Image Upload</label>
               <input type="file" class="form-control" name="the_images" id="batch_files_upload" accept=".zip*">
-              <input type="submit" class="form-control">
             </div>
+			  <button type="submit" class="btn btn-success btn-sm btn-block sub_down_buttons">Submit</button>
+			  <button type="submit" class="btn btn-secondary btn-sm btn-block sub_down_buttons">Download</button>
           </form>
         </div>
         <div class="col-sm-6">

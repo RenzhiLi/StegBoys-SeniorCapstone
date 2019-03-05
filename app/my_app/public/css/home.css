@@ -18,3 +18,8 @@
   max-height: 500px;
   display: block;
 }
+
+.sub_down_buttons {
+	font-size: 15px;
+	margin-top: 3px;
+}
