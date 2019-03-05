@@ -5,11 +5,11 @@ from joblib import dump, load
 
 
 name = sys.argv[1]
-data = pd.read_csv(name)
+data = pd.read_csv(name, header=None)
 filenames = data.values[:,:1]
 data = data.values[:,1:]
 
-clf = load('model.joblib')
+clf = load('stemodel.joblib')
 prediction = clf.predict(data)
 
 good = 0

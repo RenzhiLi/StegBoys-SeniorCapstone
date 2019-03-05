@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from joblib import dump, load
@@ -26,14 +26,14 @@ data_test = test_x[:,1:]
 data_train = train_x[:,1:]
 
 #Defines the model and parameteres
-clf = RandomForestClassifier(max_depth=10, criterion='entropy')
+clf = SVC()
 #Fit the model to the data
 clf.fit(data_train,train_y)
 
 #Creates file with saved model
-dump(clf, '/Users/mohammedawan/PycharmProjects/StegModel/stemodel.joblib')
+dump(clf, 'stemodel.joblib')
 #Loads model from file
-clf1 = load('/Users/mohammedawan/PycharmProjects/StegModel/stemodel.joblib')
+clf1 = load('stemodel.joblib')
 #Runs a prediction on testing data
 prediction = clf1.predict(data_test)
 #Gives the accuracy of prediction from model
