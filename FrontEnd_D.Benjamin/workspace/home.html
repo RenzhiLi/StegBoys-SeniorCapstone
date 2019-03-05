@@ -46,23 +46,29 @@
             <img src="assets/images/book.jpg" alt="book" class="rounded mx-auto d-block img-fluid book">
         </div>
         <div class="col-sm-6" style="border-style: solid; border-width: 2px 0px 2px 2px; border-color:hsla(220, 21%, 29%, 0.5);">
-          <form action="/action_page.php">
+          <form action="/imageUpload_page.php">
             <div class="form-group">
-              <label for="file_upload">Upload Image (.png only)</label>
-              <input type="file" class="form-control" name=".png" id="file_upload" accept="image/*">
-              <input type="submit" class="form-control">
+              <label for="file_upload">Upload Image</label>
+              <input type="file" class="form-control" name="image" id="file_upload" accept="image/*">
             </div>
+              <button type="submit" class="btn btn-success btn-sm btn-block sub_down_buttons">Submit</button>
+          </form>
+          <form action="/downloadImage_page.php">
+            <button type="submit" class="btn btn-secondary btn-sm btn-block sub_down_buttons">Download</button>
           </form>
         </div>
       </div>
       <div class ="row">
         <div class="col-sm-6" style="border-style: solid; border-width: 0px 2px 0px 0px; border-color:hsla(220, 21%, 29%, 0.5);">
-          <form action="/action_page.php">
+          <form action="/imagesUpload_page.php">
             <div class="form-group">
-              <label for="batch_files_upload">Batch Image Upload (.png only)</label>
-              <input type="file" class="form-control" name=".png" id="batch_files_upload" accept="image/*">
-              <input type="submit" class="form-control">
+              <label for="batch_files_upload">Batch Image Upload</label>
+              <input type="file" class="form-control" name="images" id="batch_files_upload" accept="image/*">
             </div>
+              <button type="submit" class="btn btn-success btn-sm btn-block sub_down_buttons">Submit</button>
+          </form>
+          <form action="/downloadImages_page.php">
+            <button type="submit" class="btn btn-secondary btn-sm btn-block sub_down_buttons">Download</button>
           </form>
         </div>
         <div class="col-sm-6">
