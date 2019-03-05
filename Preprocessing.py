@@ -4,9 +4,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 import sys
+filetype = "dir"
 filextends = ('.jpg','.jpeg','.exif','.gif','.bmp','.png','.bpg',
 	'.tif')
 def load_pics(directory : 'images directory') -> "a loaded pic list":
+	global filetype
 	im , file_paths = [], []
 	if os.path.isdir(directory):
 		for root,dirnames,filenames in os.walk(directory):
@@ -19,6 +21,7 @@ def load_pics(directory : 'images directory') -> "a loaded pic list":
 						im.append(Image.open(filepath))
 	elif os.path.isfile(directory):
 		im.append(Image.open(directory))
+		file_paths.append(directory)
 	return im, file_paths
 
 def preprocess(data : 'loaded pic list (from load_pics())',
@@ -81,20 +84,15 @@ def preprocess(data : 'loaded pic list (from load_pics())',
 
 def exe_cmdline():
 	# command line args: imput dir, output csv file name, resize shape
-	im , file_path = load_pics(sys.argv[1])
-	data = preprocess(im,resize=eval(sys.argv[3]),color_mode='RGB',output_format='2d',int_process_RGB=True)
-	data = np.concatenate((np.array(file_path).reshape(-1,1),data),axis=1)
-	pd.DataFrame(data).to_csv(sys.argv[2],index=False,header=False)
+	main(sys.argv[1],sys.argv[2],sys.argv[3])
 
-def main():
+def main(input,output,resize):
 	# example
 	# da = preprocess(im,resize=(128,128),color_mode='RGB',output_format='2d')
-	im , file_path = load_pics('./sample_images')
-	data = preprocess(im,resize=(64,64),color_mode='RGB',output_format='2d',int_process_RGB=True)
+	im , file_path = load_pics(input)
+	data = preprocess(im,resize=eval(resize),color_mode='RGB',output_format='2d',int_process_RGB=True)
 	data = np.concatenate((np.array(file_path).reshape(-1,1),data),axis=1)
-	pd.DataFrame(data).to_csv('sample_images.csv',index=False,header=False)
-	print(data)
-	print(data.shape)
+	pd.DataFrame(data).to_csv(output,index=False,header=False)
 
 def built_training_set(directory,targetfile,resize,tag):
 	im , file_paths, count = [], [], 0
