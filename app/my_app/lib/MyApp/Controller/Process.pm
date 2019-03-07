@@ -22,18 +22,21 @@ sub upload_image {
 	`python3 $script_to_run $filepath $target_path '(64,64)'`;
 
 	# testing the image
-	$script_to_run = $self->scripts . "steg_detect.py";
+	$script_to_run = $self->scripts . "Model.py";
+	print "python3 $script_to_run $target_path\n";
 	my $results = `python3 $script_to_run $target_path`;
 	my @results = split(/\n/, $results);
 
 	# writing good images to zip
 
 	my $good_files = '';
-	for (my $i = 0; $i < ((scalar @results) - 1); $i++) {
+	for (my $i = 0; $i < ((scalar @results) - 2); $i++) {
 		$good_files .= $directory.$results[$i]."|";
 	}
 
-	$good_files .= $results[-1];
+	$good_files .= $results[-2];
+
+	my $percentage = $results[-1];
 
 	my $output_zip = $directory."clean.zip";
 	
@@ -43,8 +46,8 @@ sub upload_image {
 
 	$zip->writeToFileNamed($output_zip);
 
-	$self->stash(id => $rand_name, results => '90%');
-	$self->render('home');
+	$self->stash(id => $rand_name, results => $percentage*100 . "%");
+	$self->render('navigation/home');
 
 	# returning results
 	#$self->res->headers->content_type('application/zip');
@@ -77,18 +80,21 @@ sub upload_images {
 	`python3 $script_to_run $filepath $target_path '(64,64)'`;
 
 	# testing the image
-	$script_to_run = $self->scripts . "steg_detect.py";
+	$script_to_run = $self->scripts . "Model.py";
+	print "python3 $script_to_run $target_path\n";
 	my $results = `python3 $script_to_run $target_path`;
 	my @results = split(/\n/, $results);
 
 	# writing good images to zip
 
 	my $good_files = '';
-	for (my $i = 0; $i < ((scalar @results) - 1); $i++) {
+	for (my $i = 0; $i < ((scalar @results) - 2); $i++) {
 		$good_files .= $directory.$results[$i]."|";
 	}
 
-	$good_files .= $results[-1];
+	$good_files .= $results[-2];
+
+	my $percentage = $results[-1];
 
 	my $output_zip = $directory."clean.zip";
 	
@@ -98,8 +104,8 @@ sub upload_images {
 
 	$zip->writeToFileNamed($output_zip);
 
-	$self->stash(id => $rand_name, results => '90%');
-	$self->render('home');
+	$self->stash(id => $rand_name, results => $percentage*100 . "%");
+	$self->render('navigation/home');
 
 	# returning results
 	#$self->res->headers->content_type('application/zip');

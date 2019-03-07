@@ -9,7 +9,7 @@ data = pd.read_csv(name, header=None)
 filenames = data.values[:,:1]
 data = data.values[:,1:]
 
-clf = load('stemodel.joblib')
+clf = load('/home/jcmonroe/Nextcloud/stegboys/StegBoys-SeniorCapstone/stemodel.joblib')
 prediction = clf.predict(data)
 
 good = 0
@@ -17,7 +17,7 @@ total = len(prediction)
 for file, pred in zip(filenames, prediction):
     if(pred == 0):
         good += 1
-        print(file)
+        print(file[0])
 bad = total - good
 
-print('Total Num of Pics: ' + str(total) + '\n Precentage of Good: ' + str(good/total) + '\n Precentage of Bad: ' + str(bad/total))
+print(str(good/total))
