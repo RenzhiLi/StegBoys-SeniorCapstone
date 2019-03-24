@@ -7,9 +7,7 @@
     <!--CSS Bootstrap CDN Link-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/site.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/home.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/about.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/contact.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/model_upload.css"/>
     <!--StegBoys Webpage Title-->
     <title>StegBoys Steganography Detector</title>
   </head>
@@ -33,10 +31,10 @@
                 <a href="home.html" target="_self" class="nav-link text-dark nav_links">Home</a>
               </li>
               <li class="nav-item">
-                <a href="about.html" target="_self" class="nav-link text-dark nav_links">About</a>
+                <a href="model_upload.html" target="self" class="nav-link text-dark nav_links">Model Upload</a>
               </li>
               <li class="nav-item">
-                <a href="contact.html" target="self" class="nav-link text-dark nav_links">Contact</a>
+                <a href="about.html" target="_self" class="nav-link text-dark nav_links">About</a>
               </li>
             </ul>
           </div>
@@ -45,45 +43,20 @@
     <div class="container-fluid">
       <div class ="row">
         <div class="col-sm-12 text-center" style="border-style: solid; border-width: 2px 2px 2px 2px; border-color:hsla(220, 21%, 29%, 0.5); height: 15vh;">
-          <h1 class="mt-sm-4 contact_heading">Contact Us</h1>
+          <h1 class="mt-sm-4 contact_heading">Model Upload</h1>
           <div class="about_body">
-            <p>Please fill out the form below to contact us with any questions you may have:</p>
+            <p>Please use this page to upload your own machine learning model for predictive purposes.</p>
           </div>
         </div>
       </div>
-      <div class ="form-row mt-sm-3" style="height: 12vh">
-        <div class="col-sm-6">
+      <div class="row mt-sm-3" style="border-style: solid; border-width: 2px 2px 2px 2px; border-color:hsla(220, 21%, 29%, 0.5); height: 57vh">
+        <form class="col-md-12 mt-sm-3 text-center" action="/imageUpload_page.php">
           <div class="form-group">
-            <label for="form_firstName">First Name:</label>
-            <input id="form_firstName" type="text" name="firstName" class="form-control" required="required" placeholder="Enter your first name.">
+            <input type="file" class="form-control" name="model" id="file_upload" accept=".joblib">
           </div>
-         </div>
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label for="form_lastName">Last Name:</label>
-            <input id="form_lastName" type="text" name="lastName" class="form-control" required="required" placeholder="Enter your last name.">
-          </div>
-        </div>
+            <button type="submit" class="btn btn-success btn-block sub_down_buttons">Upload</button>
+        </form>
       </div>
-      <div class="form-row">
-        <div class="col-md-12">
-           <div class="form-group">
-             <label for="form_email">Email:</label>
-             <input id="form_email" type="email" name="email" class="form-control" required="required" placeholder="Enter your email.">
-           </div>
-         </div>
-       </div>
-       <div class="form-row" style="height: 35vh">
-         <div class="col-md-12">
-            <div class="form-group">
-              <label for="form_feedback">Feedback:</label>
-              <textarea id="form_feedback" name="feedback" class="form-control" rows="6" required="required" placeholder="Enter your response."></textarea>
-            </div>
-          </div>
-          <div class="col-md-12 mb-sm-3">
-            <input type="submit" class="btn btn-success btn-send" value="Submit Feedback">
-          </div>
-        </div>
       <div class ="row bg-dark text-light footer">
         <div class="col-sm-12">
             <hr class="copyright_break">
@@ -97,7 +70,7 @@
                   <a href="about.html" target="_self" class="nav-link footer_links">About</a>
                 </li>
                 <li class="nav-item">
-                  <a href="contact.html" target="self" class="nav-link footer_links">Contact</a>
+                  <a href="model_upload.html" target="self" class="nav-link footer_links">Model</a>
                 </li>
                 <li class="nav-item">
                     <a href="https://icons8.com/" target="_blank" class="nav-link footer_links">Icons</a>
