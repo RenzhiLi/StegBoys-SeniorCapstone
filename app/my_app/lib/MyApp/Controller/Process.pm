@@ -77,6 +77,7 @@ sub upload_images {
 	# preprocessing
 	my $script_to_run = $self->scripts . "Preprocessing.py";
 	my $target_path = $directory."preprocessed.csv";
+	print "python3 $script_to_run $filepath $target_path '(64,64)'";
 	`python3 $script_to_run $filepath $target_path '(64,64)'`;
 
 	# testing the image
@@ -89,7 +90,7 @@ sub upload_images {
 
 	my $good_files = '';
 	for (my $i = 0; $i < ((scalar @results) - 2); $i++) {
-		$good_files .= $directory.$results[$i]."|";
+		$good_files .= $results[$i]."|";
 	}
 
 	$good_files .= $results[-2];
@@ -99,6 +100,8 @@ sub upload_images {
 	my $output_zip = $directory."clean.zip";
 	
 	my $zip = Archive::Zip->new();
+
+	print "\n$good_files\n";
 
 	$zip->addTreeMatching($directory, '', $good_files);
 

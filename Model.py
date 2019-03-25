@@ -9,7 +9,7 @@ data = pd.read_csv(name, header=None)
 filenames = data.values[:,:1]
 data = data.values[:,1:]
 
-clf = load('/home/jcmonroe/Nextcloud/stegboys/StegBoys-SeniorCapstone/stemodel.joblib')
+clf = load('/home/ec2-user/environment/StegBoys-SeniorCapstone/stemodel.joblib')
 prediction = clf.predict(data)
 
 good = 0
