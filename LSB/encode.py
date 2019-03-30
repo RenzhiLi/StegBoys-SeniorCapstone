@@ -26,6 +26,10 @@ with open('random_text.txt') as csv_file:
                 text += texts[rand][0] + ' '
             inputpath = os.path.join(path, image_path)
             steg = LSBSteg(cv2.imread(inputpath))
+            if i == 0:
+                print('starting to embedding message...')
+                print('input picture: ' +str(inputpath))
+                print('message embedding in this message:' + text)
             img_encoded = steg.encode_text(text)
             outputpath = os.path.join(opath, "out" + str(i) +".png")
             cv2.imwrite(outputpath, img_encoded)
