@@ -1,7 +1,13 @@
 @charset "UTF-8";
 
-.contact_heading {
+.model_heading {
   font-size: 25px;
   font-weight: bold;
+
+}
+
+.model_body {
+  font-size: 18px;
+
 
 }
