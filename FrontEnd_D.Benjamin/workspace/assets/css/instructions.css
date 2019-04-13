@@ -6,6 +6,7 @@
 
 }
 
+
 .instructions_body {
   font-size: 18px;
 
@@ -30,4 +31,13 @@
 
 .links:active {
   text-decoration: none;
+}
+
+.main_list > li {
+  padding-top: 25px;
+
+}
+
+.file_list > li {
+  padding-top: 7px;
 }

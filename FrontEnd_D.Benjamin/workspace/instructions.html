@@ -25,7 +25,7 @@
           <img src="assets/images/menu.png" alt="Menu" class="img-fluid menu">
         </button>
         <div class="collapse navbar-collapse" id="nav_content">
-          <p class="navspec navbar-brand mt-sm-3" href="#">SDML</p>
+          <p class="navspec navbar-brand mt-sm-3">SDML</p>
           <ul class="nav navbar-justified">
               <li class="nav-item">
                 <a href="home.html" target="_self" class="nav-link text-dark nav_links">Home</a>
@@ -47,17 +47,33 @@
       <div class ="row">
         <div class="col-sm-12 text-center h-50" style="border-style: solid; border-width: 2px 2px 2px 2px; border-color:hsla(220, 21%, 29%, 0.5);">
           <h1 class="mt-sm-4 instructions_heading">Instructions</h1>
-          <div class="instructions_body">
+          <div class="instructions_body pt-3 pb-4">
             <p>This page will outline the steps you need to take to train your
             own machine learning model using either your own images (training dataset) or the sample images
             we have provided for you on this page. We will also provide you with the preprocessing Python script, so you
             can extrapolate the RGB values from your training dataset and save them as a .csv file. Furthermore, we will provide
             you with some test images (test dataset), so you can get an unbiased verdict on the model's accuracy. For convenience,
-            we will also allow you to use some pre-trained sample models that we have created using SVN, CNN, and Deep Learning.</p>
-            <ol class="text-left">
-              <li>Step 1</li>
-              <li>Step 2</li>
-              <li>Step n...</li>
+            we will also allow you to use some pre-trained sample models that we have created using SVM, CNN, and Deep Learning.</p>
+            <ol class="text-left main_list">
+              <li>The first step in this process is acquiring enough images for the machine learning model to train on.
+              For example, we used 3,000 64x64 8-bit random images. If you wish to use a different image size or bit length, then
+              you must modify the preprocessing Python script to accept these values.</li>
+              <li>The next step is to embed half the images (to avoid model bias) with a message using LSB (least significant bit) or an algorithm of your choice. We found
+              that when we used LSB with at least 300 words embedded in the image, our accuracy increased significantly for each classification model
+              we used. Thus, when the model is modified more, it is easier for the model to see a pattern and detect that the image may be bad (contain a hidden message).
+              So, you can experiment with how many random words you wish to embed in the image.</li>
+              <li>After you embed messages in half the images, you must separate the good images from the bad by putting them in two separate directories (good and bad), so the model
+              has a label for each type when training.</li>
+              <li>Now, you will split the data randomly into a training dataset and a test dataset and train the model of your choice (e.g. SVM) with the training dataset, making sure to use the correct parameters for that model.
+              It is recommended that you use split the data into 80 percent for the training dataset
+              and 20 percent for the test dataset to ensure the model has enough images to train on, ensure enough images it has never seen before to test on, and to limit bias and guarantee
+              a reasonable confidence level.</li>
+              <li>Once the model has been trained, you can save the model file (e.g. .joblib), so you don't have to waste computing resources and time training the model again. You can then upload the model
+              to the 'Model' page located under the hamburger menu in the SDML web application.</li>
+              <li>Once the model file of your choice has been uploaded, navigate to the 'Home' page and upload a single image or a batch of images to test for dirty images. Note that SDML replaces the previously uploaded model with
+              the most current one; it uses this current model for predictive purposes until you upload a new model file.</li>
+              <li>This concludes the instructional portion of our application. Make sure to visit our GitHub, located in the footer, and read the 'About' page to get more information about the developers and source of inspiration
+              for this project.</li>
             </ol>
           </div>
         </div>
@@ -65,8 +81,8 @@
       <div class="row mt-sm-3" style="border-style: solid; border-width: 2px 2px 2px 2px; border-color:hsla(220, 21%, 29%, 0.5);">
         <div class="col-md-12 mt-sm-3 text-center h-25">
           <h1 class="mt-sm-4 instructions_heading">Sample Files</h1>
-          <div class="instructions_body">
-            <ul class="text-left">
+          <div class="instructions_body pt-3 pb-3">
+            <ul class="text-left file_list">
               <li><a class="links" href="assets/steg_files/Preprocessing.zip" download>Preprocessing Python Script</a></li>
               <li><a class="links" href="assets/steg_files/input_pics.zip" download>Training Dataset (Unprocessed)</a></li>
               <li><a class="links" href="assets/steg_files/sample_trainingset.zip" download>Training Dataset (Processed)</a></li>
